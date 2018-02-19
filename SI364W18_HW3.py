@@ -214,11 +214,11 @@ def get_longest_tweet():
 		all_tweets.append((tw.text, users.username, users.display_name))
 	new_dict = {}
 	for i in range(0, (len(all_tweets)-1)):
-		tweet_length = len(all_tweets[i][0] - all_tweets[i][0].count(" "))
-		new_dict[i] = tweet_length
-	
-	return str(all_tweets)
-	
+		tweet_length = len(all_tweets[i][0]) - all_tweets[i][0].count(" ")
+		new_dict[all_tweets[i]] = tweet_length
+	longest_tweet = sorted(new_dict.items(), key = lambda x:x[1], reverse = True)
+	longest_tweet = longest_tweet[0]
+	return render_template("longest_tweet.html", longest_tweet = longest_tweet)
 # NOTE:
 # This view function should compute and render a template (as shown in the sample application) that shows the text of the tweet currently saved in the database which has the most NON-WHITESPACE characters in it, and the username AND display name of the user that it belongs to.
 # NOTE: This is different (or could be different) from the tweet with the most characters including whitespace!

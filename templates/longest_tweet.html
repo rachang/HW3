@@ -1,12 +1,12 @@
 {% extends 'base.html' %} 
 {% block content %}
-<ul>
-{% for nm in users %}
-  <li>{{ nm.username }} -- <i>{{ nm.display_name }}</i></li><br>
-{% endfor %}
-</ul>
+<span>The longest tweet was: </span><br>
+<b>{{ longest_tweet[0][0] }}</b><br>
+<i>posted by</i> @{{ longest_tweet[0][1] }} - {{ longest_tweet[0][2] }}<br><br>
+Number of characters = {{ longest_tweet[1] }}
 
-{% if not users %}
-    There are no users to show.
+
+{% if not longest_tweet%}
+    There are no tweets to show.
 {% endif %}
 {% endblock %}
